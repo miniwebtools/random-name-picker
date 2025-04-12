@@ -1,11 +1,12 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <meta name="description" content="Use our Random Name Picker to fairly and quickly choose a name from a list. Perfect for giveaways, team selections, classroom use, and more." />
-  <meta name="keywords" content="Random Name Picker, name selector, name chooser tool, random picker, draw winner tool" />
- <title>Random Name Picker – Instantly Pick a Name from a List</title>
-      <style>
+    <meta name="description" content="Use our Random Name Picker to fairly and quickly choose a name from a list. Perfect for giveaways, team selections, classroom use, and more." />
+    <meta name="keywords" content="Random Name Picker, name selector, name chooser tool, random picker, draw winner tool" />
+    <title>Random Name Picker – Instantly Pick a Name from a List</title>
+    <style>
         /* Modern CSS Reset with Custom Variables */
         :root {
             --primary-purple: #7e57c2;
@@ -74,7 +75,7 @@
             color: var(--primary-purple);
         }
         .namepick-textarea {
-            width: 90%;
+            width: 100%;
             min-height: 120px;
             padding: 0.8rem;
             border: 2px solid #e0e0e0;
@@ -107,6 +108,7 @@
             transition: var(--transition-fast);
             box-shadow: var(--shadow-sm);
             white-space: nowrap;
+            width: 100%;
         }
         .namepick-button:hover {
             background-color: var(--secondary-pink);
@@ -119,7 +121,7 @@
         .namepick-button-secondary {
             background-color: var(--accent-teal);
         }    
-          .namepick-result-container {
+        .namepick-result-container {
             margin-bottom: 2rem;
             text-align: center;
         }
@@ -149,6 +151,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            word-break: break-word;
         }
         .namepick-result-label {
             font-size: 1rem;
@@ -158,7 +161,7 @@
         .namepick-history-container {
             margin-bottom: 2rem;
         }
-          .namepick-history-title {
+        .namepick-history-title {
             font-weight: 600;
             color: var(--primary-purple);
             margin-bottom: 0.8rem;
@@ -173,6 +176,7 @@
             background-color: var(--light-bg);
             border-radius: 20px;
             font-size: 0.9rem;
+            margin-bottom: 0.5rem;
         }
         .namepick-history-item.current {
             background-color: var(--secondary-pink);
@@ -204,6 +208,8 @@
         }
         .namepick-checkbox {
             accent-color: var(--primary-purple);
+            width: 18px;
+            height: 18px;
         }
         .namepick-table-responsive {
             width: 100%;
@@ -211,6 +217,7 @@
             margin-bottom: 2rem;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-sm);
+            -webkit-overflow-scrolling: touch;
         }
         .namepick-data-table {
             width: 100%;
@@ -233,12 +240,41 @@
         .namepick-data-table tr:hover {
             background-color: #f3e5f5;
         }
+        /* Information section styles */
+        .info-section {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+        }
+        .info-section h2 {
+            color: var(--primary-purple);
+            margin: 1rem 0 0.5rem;
+        }
+        .info-section p {
+            margin-bottom: 1rem;
+        }
+        .info-box {
+            background-color: var(--light-bg);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin: 1rem 0;
+        }
+        .info-section ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        /* Enhanced responsive styles */
         @media (max-width: 768px) {
+            .namepick-container-main {
+                padding: 0.5rem;
+            }
             .namepick-input-section {
                 grid-template-columns: 1fr;
             }
             .namepick-button-group {
-                flex-direction: row;
+                flex-direction: column;
                 justify-content: flex-start;
             }
             .namepick-title-heading {
@@ -246,6 +282,51 @@
             }
             .namepick-result-value {
                 font-size: 2rem;
+                word-break: break-word;
+            }
+            .namepick-settings-container {
+                grid-template-columns: 1fr;
+            }
+            .namepick-history-list {
+                justify-content: center;
+            }
+            .namepick-result-card {
+                padding: 1rem;
+            }
+        }
+        @media (max-width: 480px) {
+            body {
+                padding: 0.25rem;
+            }
+            .namepick-container-main {
+                padding: 0.5rem;
+            }
+            .namepick-header-section {
+                padding: 0.5rem;
+            }
+            .namepick-title-heading {
+                font-size: 1.25rem;
+            }
+            .namepick-subtitle-text {
+                font-size: 0.9rem;
+            }
+            .namepick-result-value {
+                font-size: 1.5rem;
+                min-height: 3rem;
+            }
+            .namepick-button {
+                padding: 0.7rem 1rem;
+                font-size: 0.9rem;
+            }
+            .namepick-setting-group {
+                padding: 0.75rem;
+            }
+            .namepick-input-label, .namepick-history-title, .namepick-setting-title {
+                font-size: 0.9rem;
+            }
+            .namepick-data-table th, .namepick-data-table td {
+                padding: 0.5rem;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -256,7 +337,7 @@
             <h1 class="namepick-title-heading">Random Name Picker</h1>
             <p class="namepick-subtitle-text">Fair and fun selection for any occasion</p>
         </div>
-                <div class="namepick-input-section">
+        <div class="namepick-input-section">
             <div class="namepick-input-group">
                 <label for="nameList" class="namepick-input-label">Enter Names (one per line or comma separated)</label>
                 <textarea id="nameList" class="namepick-textarea" placeholder="John, Jane, Mike, Sarah"></textarea>
@@ -299,7 +380,7 @@
                 </div>
             </div>
         </div>
-                <div class="namepick-history-container">
+        <div class="namepick-history-container">
             <div class="namepick-history-title">Recently Picked Names</div>
             <div class="namepick-history-list" id="historyList">
                 <!-- History items will be added here dynamically -->
@@ -319,6 +400,37 @@
                     <!-- Name stats will be added here dynamically -->
                 </tbody>
             </table>
+        </div>
+        <div class="info-section">
+            <p>The <strong>Random Name Picker</strong> is a fast and fair tool for choosing names from a list. Whether you're running a giveaway, choosing team members, or making a classroom activity more fun, this tool makes random selections easy and exciting.</p>
+            <h2>What Is a Random Name Picker?</h2>
+            <p>It's a simple online tool where you enter a list of names, and it randomly selects one or more from the list. It helps avoid bias, saves time, and makes the selection process feel fair to everyone involved.</p>
+            <h2>How to Use the Tool</h2>
+            <div class="info-box">
+                <ul>
+                    <li>Type or paste all the names into the box, one name per line or comma separated.</li>
+                    <li>Click the "Pick Random" button.</li>
+                    <li>The tool will randomly select a name from your list and display it on the screen.</li>
+                </ul>
+            </div>
+            <h2>Where Can You Use It?</h2>
+            <ul>
+                <li><strong>Giveaways:</strong> Fairly choose a winner from all entries.</li>
+                <li><strong>Classrooms:</strong> Pick a student to answer a question or lead an activity.</li>
+                <li><strong>Teams:</strong> Randomly assign members to groups or roles.</li>
+                <li><strong>Events:</strong> Draw names for prizes, volunteers, or activities.</li>
+            </ul>
+            <h2>Benefits of a Random Name Picker</h2>
+            <ul>
+                <li>Eliminates human bias</li>
+                <li>Saves time when managing large groups</li>
+                <li>Easy to use on any device</li>
+                <li>Fun and engaging experience for all users</li>
+            </ul>
+            <h2>Example</h2>
+            <p>Imagine you're hosting a $50 giveaway. You have 10 names. Instead of writing them on paper and drawing randomly, you use the Random Name Picker. In one click, it fairly picks a winner for you — saving time and adding fun!</p>
+            <h2>Conclusion</h2>
+            <p>The <strong>Random Name Picker</strong> is a smart solution for any situation where names need to be selected at random. Whether for fun or function, this tool is simple, quick, and always fair. Try it today and make your random selections easier than ever.</p>
         </div>
     </div>
     <script>
@@ -512,7 +624,7 @@
                 const countCell = document.createElement('td');
                 countCell.textContent = nameStats[name]?.count || 0;
                 row.appendChild(countCell);
-                                const lastPickedCell = document.createElement('td');
+                const lastPickedCell = document.createElement('td');
                 lastPickedCell.textContent = nameStats[name]?.lastPicked || 'Never';
                 row.appendChild(lastPickedCell);
                 const percentageCell = document.createElement('td');
@@ -532,40 +644,3 @@
     </script>
 </body>
 </html>
-
-<br>
- <p>The <strong>Random Name Picker</strong> is a fast and fair tool for choosing names from a list. Whether you're running a giveaway, choosing team members, or making a classroom activity more fun, this tool makes random selections easy and exciting.</p>
-
-  <h2>What Is a Random Name Picker?</h2>
-  <p>It’s a simple online tool where you enter a list of names, and it randomly selects one or more from the list. It helps avoid bias, saves time, and makes the selection process feel fair to everyone involved.</p>
-
-  <h2>How to Use the Tool</h2>
-  <div class="info-box">
-    <ul>
-      <li>Type or paste all the names into the box, one name per line.</li>
-      <li>Click the “Pick a Name” button.</li>
-      <li>The tool will randomly select a name from your list and display it on the screen.</li>
-    </ul>
-  </div>
-
-  <h2>Where Can You Use It?</h2>
-  <ul>
-    <li><strong>Giveaways:</strong> Fairly choose a winner from all entries.</li>
-    <li><strong>Classrooms:</strong> Pick a student to answer a question or lead an activity.</li>
-    <li><strong>Teams:</strong> Randomly assign members to groups or roles.</li>
-    <li><strong>Events:</strong> Draw names for prizes, volunteers, or activities.</li>
-  </ul>
-
-  <h2>Benefits of a Random Name Picker</h2>
-  <ul>
-    <li>Eliminates human bias</li>
-    <li>Saves time when managing large groups</li>
-    <li>Easy to use on any device</li>
-    <li>Fun and engaging experience for all users</li>
-  </ul>
-
-  <h2>Example</h2>
-  <p>Imagine you’re hosting a $50 giveaway. You have 10 names. Instead of writing them on paper and drawing randomly, you use the Random Name Picker. In one click, it fairly picks a winner for you — saving time and adding fun!</p>
-
-  <h2>Conclusion</h2>
-  <p>The <strong>Random Name Picker</strong> is a smart solution for any situation where names need to be selected at random. Whether for fun or function, this tool is simple, quick, and always fair. Try it today and make your random selections easier than ever.</p>
