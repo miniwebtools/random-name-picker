@@ -8,7 +8,6 @@
  
   <title>Random Name Picker – Instantly Pick a Name from a List</title>
     <style>
-        /* Modern CSS Reset with Custom Variables */
         :root {
             --primary-purple: #7e57c2;
             --secondary-pink: #ec407a;
