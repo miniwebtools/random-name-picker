@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <meta name="description" content="Use our Random Name Picker to fairly and quickly choose a name from a list. Perfect for giveaways, team selections, classroom use, and more." />
   <meta name="keywords" content="Random Name Picker, name selector, name chooser tool, random picker, draw winner tool" />
- 
-  <title>Random Name Picker – Instantly Pick a Name from a List</title>
-    <style>
+ <title>Random Name Picker – Instantly Pick a Name from a List</title>
+      <style>
+        /* Modern CSS Reset with Custom Variables */
         :root {
             --primary-purple: #7e57c2;
             --secondary-pink: #ec407a;
@@ -20,7 +20,7 @@
             --transition-fast: all 0.2s ease;
             --border-radius: 8px;
             --highlight-color: #fff176;
-        } 
+        }
         * {
             margin: 0;
             padding: 0;
@@ -54,6 +54,7 @@
             font-size: 2rem;
             margin-bottom: 0.5rem;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
         .namepick-subtitle-text {
             font-size: 1rem;
             opacity: 0.9;
@@ -108,7 +109,7 @@
             box-shadow: var(--shadow-sm);
             white-space: nowrap;
         }
-                .namepick-button:hover {
+        .namepick-button:hover {
             background-color: var(--secondary-pink);
             transform: translateY(-2px);
             box-shadow: var(--shadow-md);
@@ -116,10 +117,10 @@
         .namepick-button:active {
             transform: translateY(0);
         }
-                .namepick-button-secondary {
+        .namepick-button-secondary {
             background-color: var(--accent-teal);
-        }
-        .namepick-result-container {
+        }    
+          .namepick-result-container {
             margin-bottom: 2rem;
             text-align: center;
         }
@@ -136,7 +137,7 @@
             animation: highlight 1.5s ease;
             background-color: var(--highlight-color);
         }
-                @keyframes highlight {
+        @keyframes highlight {
             0% { background-color: var(--highlight-color); }
             100% { background-color: white; }
         }
@@ -158,7 +159,7 @@
         .namepick-history-container {
             margin-bottom: 2rem;
         }
-        .namepick-history-title {
+          .namepick-history-title {
             font-weight: 600;
             color: var(--primary-purple);
             margin-bottom: 0.8rem;
