@@ -74,7 +74,7 @@
             color: var(--primary-purple);
         }
         .namepick-textarea {
-            width: 100%;
+            width: 90%;
             min-height: 120px;
             padding: 0.8rem;
             border: 2px solid #e0e0e0;
